@@ -2,8 +2,18 @@
   display: flex;
 }
 
+.column-styles {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
 .profile-form {
   margin: 30px 10px 10px 20px;
+}
+
+.button-styles {
+  background-color: black !important;
+  border-color: black !important;
 }
 
 .female-checkbox {

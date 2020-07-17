@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import as from "../App.css";
+import "./styles.css";
 import { TodoItem } from "./todo-item";
 import { v4 as uuidv4 } from "uuid";
 
@@ -44,7 +44,7 @@ const Todo = () => {
   };
   return (
     <>
-      <div className="common-flex">
+      <div className="common-flex profile-form">
         <input
           type="text"
           value={list}

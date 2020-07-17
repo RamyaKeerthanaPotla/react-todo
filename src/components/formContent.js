@@ -7,7 +7,7 @@ export const FormContent = () => {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [language, setLanguage] = useState("");
+  const [language, setLanguage] = useState([]);
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
 
@@ -17,7 +17,7 @@ export const FormContent = () => {
       name,
       email,
       phone: phoneNumber,
-      languages: [],
+      languages: language,
       gender,
       country,
     };
@@ -110,7 +110,10 @@ export const FormContent = () => {
                 className="form-check-input"
                 type="checkbox"
                 id="gridCheck1"
-                onChange={(e) => setLanguage(e.target.value)}
+                value="JavaScript"
+                onChange={(e) =>
+                  setLanguage((language) => language.concat(e.target.value))
+                }
               />
               <label className="form-check-label" for="gridCheck1">
                 JavaScript
@@ -120,7 +123,8 @@ export const FormContent = () => {
               <input
                 className="form-check-input"
                 type="checkbox"
-                id="gridCheck1"
+                id="gridCheck2"
+                value="Java"
                 onChange={(e) => setLanguage(e.target.value)}
               />
               <label className="form-check-label" for="gridCheck1">
@@ -131,7 +135,8 @@ export const FormContent = () => {
               <input
                 className="form-check-input"
                 type="checkbox"
-                id="gridCheck1"
+                id="gridCheck4"
+                value="Python"
                 onChange={(e) => setLanguage(e.target.value)}
               />
               <label className="form-check-label" for="gridCheck1">
@@ -147,7 +152,7 @@ export const FormContent = () => {
             type="radio"
             name="inlineRadioOptions"
             id="inlineRadio1"
-            value="option1"
+            value="Male"
             onChange={(e) => setGender(e.target.value)}
           />
           <label className="form-check-label" for="inlineRadio1">
@@ -160,7 +165,7 @@ export const FormContent = () => {
             type="radio"
             name="inlineRadioOptions"
             id="inlineRadio2"
-            value="option2"
+            value="Female"
             onChange={(e) => setGender(e.target.value)}
           />
           <label className="form-check-label" for="inlineRadio2">
@@ -172,7 +177,7 @@ export const FormContent = () => {
           <div className="col-sm-10">
             <button
               type="submit"
-              className="btn btn-primary"
+              className="btn btn-primary button-styles"
               onClick={handleSubmit}>
               Submit
             </button>
