@@ -1,14 +1,15 @@
 import React from "react";
-import { Search } from "./components/search";
-import Checkbox from "./components/checkbox";
-import Todo from "./components/todo";
+import { DetailsForm } from "./components/detailsForm";
+import "jquery/dist/jquery.min.js";
+import "popper.js/dist/popper.js";
+import "bootstrap/dist/js/bootstrap.min.js";
+import { FormContent } from "./components/formContent";
 
 function App() {
   return (
-    <div style={{ margin: 10 }}>
-      {/* <Search /> */}
-      {/* <Checkbox /> */}
-      <Todo />
+    <div>
+      <DetailsForm />
+      <FormContent />
     </div>
   );
 }

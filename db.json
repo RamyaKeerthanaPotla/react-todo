@@ -1,0 +1,35 @@
+{
+  "details": [
+    {
+      "id": 1,
+      "name": "ramya",
+      "email": "ramy@gmail.com",
+      "phone": 9866130529,
+      "languages": [
+        "javascript",
+        "java",
+        "html"
+      ],
+      "gender": "female",
+      "country": "USA"
+    },
+    {
+      "id": "c3aa50b7-22a0-4a82-a013-22fc96267ae8",
+      "name": "Ramya Keerthana Potla",
+      "email": "eeee@gmail.com",
+      "phone": "1111111111",
+      "languages": [],
+      "gender": "option2",
+      "country": "United States"
+    },
+    {
+      "id": "a6f1c5ef-6f84-4599-86fc-f040c41eb3ab",
+      "name": "Ramya Keerthana Potla",
+      "email": "hhhhhhh@gmail.com",
+      "phone": "2222222222",
+      "languages": [],
+      "gender": "option2",
+      "country": "United States"
+    }
+  ]
+}

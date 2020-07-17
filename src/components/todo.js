@@ -33,7 +33,6 @@ const Todo = () => {
     };
     setTodoArray(todoArray.concat([newTodo]));
   };
-  console.log(todoArray);
   const handleCompleted = (todoId) => {
     const updatedTodo = todoArray.map((todo) => {
       if (todo.id === todoId) {

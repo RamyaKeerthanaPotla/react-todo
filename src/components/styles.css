@@ -1,0 +1,19 @@
+.common-flex {
+  display: flex;
+}
+
+.profile-form {
+  margin: 30px 10px 10px 20px;
+}
+
+.female-checkbox {
+  margin-left: 10px;
+}
+
+.country-dropdown {
+  margin-left: 20px;
+}
+
+.submit-button {
+  margin-top: 20px;
+}
