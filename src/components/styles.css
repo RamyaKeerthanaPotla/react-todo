@@ -16,6 +16,10 @@
   border-color: black !important;
 }
 
+.add-btn {
+  margin-left: 10px;
+}
+
 .female-checkbox {
   margin-left: 10px;
 }

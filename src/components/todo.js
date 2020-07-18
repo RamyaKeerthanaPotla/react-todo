@@ -50,7 +50,12 @@ const Todo = () => {
           value={list}
           onChange={(e) => setList(e.target.value)}
         />
-        <button onClick={handleClick}>Add</button>
+        <button
+          type="submit"
+          className="btn btn-primary button-styles add-btn"
+          onClick={handleClick}>
+          Add
+        </button>
       </div>
       {todoArray.map((todo) => (
         <TodoItem todo={todo} handleCompleted={handleCompleted} />
