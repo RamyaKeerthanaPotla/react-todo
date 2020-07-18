@@ -12,9 +12,6 @@ export const Routes = () => {
       <NavBar />
       <Switch>
         <Route exact path="/login" component={Login} />
-        <Route exact path="/">
-          <Redirect to="/Home" />
-        </Route>
         <Route exact path="/enterdetails" component={FormContent} />
         <Route exact path="/myprofile" component={MyProfile} />
         <Route exact path="/todo" component={Todo} />
