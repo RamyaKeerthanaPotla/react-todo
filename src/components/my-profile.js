@@ -7,7 +7,8 @@ export const MyProfile = () => {
   useEffect(() => {
     axios
       .get("http://localhost:4000/details")
-      .then((response) => setProfileData(response.data));
+      .then((response) => setProfileData(response.data))
+      .catch((err) => console.log(err));
   }, []);
 
   console.log(profileData);
