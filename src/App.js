@@ -1,8 +1,5 @@
 import React from "react";
 import { NavBar } from "./components/navBar";
-import "jquery/dist/jquery.min.js";
-import "popper.js/dist/popper.js";
-import "bootstrap/dist/js/bootstrap.min.js";
 
 // const routing = (
 //   <Router>
