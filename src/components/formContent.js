@@ -3,6 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 import "./styles.css";
 import axios from "axios";
 
+const languageNames = ["JavaScript", "Java", "Python"];
+const genderNames = ["male", "female"];
+const countryNames = ["Australia", "Canada", "India", "United States"];
+
 export const FormContent = () => {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -11,7 +15,17 @@ export const FormContent = () => {
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
 
-  const handleSubmit = () => {
+  const handleLanguage = (e) => {
+    const { value } = e.target;
+    if (language.includes(value)) {
+      setLanguage(language.filter((lan) => lan !== value));
+    } else {
+      setLanguage(language.concat([value]));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const payload = {
       id: uuidv4(),
       name,
@@ -47,6 +61,7 @@ export const FormContent = () => {
               type="text"
               className="form-control"
               id="inputName"
+              value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
@@ -62,6 +77,7 @@ export const FormContent = () => {
               type="email"
               className="form-control"
               id="colFormLabel"
+              value={email}
               placeholder="please enter your email"
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -78,6 +94,7 @@ export const FormContent = () => {
               type="tel"
               className="form-control"
               id="inputPhoneNumber"
+              value={phoneNumber}
               pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
               onChange={(e) => setPhoneNumber(e.target.value)}
               required
@@ -91,86 +108,55 @@ export const FormContent = () => {
           </label>
           <select
             id="inputCountry"
+            value={country}
             className="form-control col-sm-4"
             onChange={(e) => setCountry(e.target.value)}
             required>
-            <option selected>Choose...</option>
-            <option>Canada</option>
-            <option>Europe</option>
-            <option>India</option>
-            <option>Dubai</option>
-            <option>United States</option>
+            {countryNames.map((countryName) => (
+              <>
+                <option>{countryName}</option>
+              </>
+            ))}
           </select>
         </div>
 
         <div className="form-group row">
           <div className="col-sm-3 ">
             <div className="form-check form-check-inline">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="gridCheck1"
-                value="JavaScript"
-                onChange={(e) =>
-                  setLanguage((language) => language.concat(e.target.value))
-                }
-              />
-              <label className="form-check-label" for="gridCheck1">
-                JavaScript
-              </label>
-            </div>
-            <div className="form-check form-check-inline female-checkbox">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="gridCheck2"
-                value="Java"
-                onChange={(e) => setLanguage(e.target.value)}
-              />
-              <label className="form-check-label" for="gridCheck1">
-                Java
-              </label>
-            </div>
-            <div className="form-check form-check-inline female-checkbox">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="gridCheck4"
-                value="Python"
-                onChange={(e) => setLanguage(e.target.value)}
-              />
-              <label className="form-check-label" for="gridCheck1">
-                Python
-              </label>
+              {languageNames.map((languageName) => (
+                <>
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="gridCheck1"
+                    value={languageName}
+                    onChange={handleLanguage}
+                  />
+                  <label className="form-check-label" for="gridCheck1">
+                    {languageName}
+                  </label>
+                </>
+              ))}
             </div>
           </div>
         </div>
 
         <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio1"
-            value="Male"
-            onChange={(e) => setGender(e.target.value)}
-          />
-          <label className="form-check-label" for="inlineRadio1">
-            Male
-          </label>
-        </div>
-        <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio2"
-            value="Female"
-            onChange={(e) => setGender(e.target.value)}
-          />
-          <label className="form-check-label" for="inlineRadio2">
-            Female
-          </label>
+          {genderNames.map((genderName) => (
+            <>
+              <input
+                className="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value={genderName}
+                onChange={(e) => setGender(e.target.value)}
+              />
+              <label className="form-check-label" for="inlineRadio1">
+                {genderName}
+              </label>
+            </>
+          ))}
         </div>
 
         <div className="form-group row submit-button">
