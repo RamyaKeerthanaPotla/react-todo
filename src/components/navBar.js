@@ -1,21 +1,22 @@
 import React from "react";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 export const NavBar = () => {
   return (
     <nav className="navbar navbar-light bg-light">
-      <a className="navbar-brand" href="./enterdetails">
+      <Link className="navbar-brand" to="/enterdetails">
         Enter Details
-      </a>
-      <a className="navbar-brand" href="./todo">
+      </Link>
+      <Link className="navbar-brand" to="/todo">
         Todo
-      </a>
-      <a className="navbar-brand" href="./myprofile">
+      </Link>
+      <Link className="navbar-brand" to="/myprofile">
         My Profile
-      </a>
-      <a className="navbar-brand" href="./login">
+      </Link>
+      <Link className="navbar-brand" to="/login">
         Login
-      </a>
+      </Link>
     </nav>
   );
 };
