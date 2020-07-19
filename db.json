@@ -5,11 +5,7 @@
       "name": "ramya",
       "email": "ramy@gmail.com",
       "phone": 9866130529,
-      "languages": [
-        "javascript",
-        "java",
-        "html"
-      ],
+      "languages": ["javascript", "java", "html"],
       "gender": "female",
       "country": "USA"
     },
@@ -38,33 +34,6 @@
       "phone": "7777777777",
       "languages": [],
       "gender": "option2",
-      "country": "United States"
-    },
-    {
-      "id": "992161af-4583-415f-8304-171f5ba0504f",
-      "name": "Ramya Keerthana Potla",
-      "email": "potlar1@hawkmail.newpaltz.edu",
-      "phone": "8454208575",
-      "languages": [],
-      "gender": "Female",
-      "country": "United States"
-    },
-    {
-      "id": "3c26d606-f203-4389-bad1-dbf1d43ba572",
-      "name": "Ramya Keerthana Potla",
-      "email": "potlar1@hawkmail.newpaltz.edu",
-      "phone": "8454208575",
-      "languages": [],
-      "gender": "",
-      "country": "United States"
-    },
-    {
-      "id": "f5dd5764-ad1d-4948-bac6-2e7ae39a4d98",
-      "name": "Ramya Keerthana Potla",
-      "email": "potlar1@hawkmail.newpaltz.edu",
-      "phone": "8454208575",
-      "languages": "on",
-      "gender": "Female",
       "country": "United States"
     },
     {
