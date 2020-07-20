@@ -10,40 +10,40 @@
       "country": "USA"
     },
     {
-      "id": "c3aa50b7-22a0-4a82-a013-22fc96267ae8",
+      "id": 2,
       "name": "Ramya Keerthana Potla",
       "email": "eeee@gmail.com",
       "phone": "1111111111",
       "languages": [],
-      "gender": "option2",
+      "gender": "female",
       "country": "United States"
     },
     {
-      "id": "a6f1c5ef-6f84-4599-86fc-f040c41eb3ab",
+      "id": 3,
       "name": "Ramya Keerthana Potla",
       "email": "hhhhhhh@gmail.com",
       "phone": "2222222222",
       "languages": [],
-      "gender": "option2",
+      "gender": "female",
       "country": "United States"
     },
     {
-      "id": "cd5c3104-9680-4042-95b8-42d231fb87df",
+      "id": 4,
       "name": "Ramya Keerthana Potla",
       "email": "ramyapotla9@gmail.com",
       "phone": "7777777777",
       "languages": [],
-      "gender": "option2",
+      "gender": "female",
       "country": "United States"
     },
     {
-      "id": "4c33340f-2f9a-4526-86c6-f94b7e0e4527",
-      "name": "",
-      "email": "",
-      "phone": "",
-      "languages": "",
-      "gender": "",
-      "country": ""
+      "id": 5,
+      "name": "Ramya Keerthana Potla",
+      "email": "hhhhhhh@gmail.com",
+      "phone": "2222222222",
+      "languages": ["Python"],
+      "gender": "female",
+      "country": "United States"
     }
   ]
 }

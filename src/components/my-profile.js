@@ -26,8 +26,8 @@ export const MyProfile = () => {
           </tr>
         </thead>
         <tbody>
-          {profileData.map((data, id) => (
-            <tr>
+          {profileData.map((data) => (
+            <tr key={data.id}>
               <th scope="row">{data.id}</th>
               <td>{data.name}</td>
               <td>{data.email}</td>

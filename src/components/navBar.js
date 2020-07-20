@@ -12,7 +12,7 @@ export const NavBar = () => {
         Todo
       </Link>
       <Link className="navbar-brand" to="/myprofile">
-        My Profile
+        Profiles
       </Link>
       <Link className="navbar-brand" to="/login">
         Login
