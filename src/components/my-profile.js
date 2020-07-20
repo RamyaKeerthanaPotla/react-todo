@@ -3,7 +3,7 @@ import "./styles.css";
 import axios from "axios";
 
 export const MyProfile = () => {
-  const [profileData, setProfileData] = useState("");
+  const [profileData, setProfileData] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:4000/details")
@@ -14,52 +14,30 @@ export const MyProfile = () => {
   console.log(profileData);
   return (
     <div className=" profile-form">
-      <form className="was-validated">
-        <div className="form-group row">
-          <label for="inputName" className="col-sm-2 col-form-label">
-            Full Name
-          </label>
-          <div className="col-sm-4"></div>
-        </div>
-
-        <div className="form-group row">
-          <label for="colFormLabel" className="col-sm-2 col-form-label">
-            Email
-          </label>
-          <div className="col-sm-4"></div>
-        </div>
-
-        <div className="form-group row">
-          <label for="inputPhoneNumber" className="col-sm-2 col-form-label">
-            Phone Number
-          </label>
-          <div className="col-sm-4"></div>
-        </div>
-
-        <div className="form-group row common-flex">
-          <label for="inputCountry" className="col-sm-2 col-form-label">
-            Country
-          </label>
-        </div>
-
-        <div className="form-group row">
-          <div className="col-sm-3 ">
-            <div className="form-check form-check-inline">
-              <label className="form-check-label" for="gridCheck1">
-                Languages
-              </label>
-            </div>
-            <div className="form-check form-check-inline female-checkbox"></div>
-          </div>
-        </div>
-
-        <div className="form-check form-check-inline">
-          <label className="form-check-label" for="inlineRadio1">
-            Gender
-          </label>
-        </div>
-        <div className="form-check form-check-inline"></div>
-      </form>
+      <table className="table">
+        <thead className="thead-dark">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Country</th>
+            <th scope="col">Languages</th>
+            <th scope="col">Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          {profileData.map((data, id) => (
+            <tr>
+              <th scope="row">{data.id}</th>
+              <td>{data.name}</td>
+              <td>{data.email}</td>
+              <td>{data.country}</td>
+              <td>{data.language}</td>
+              <td>{data.gender}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
