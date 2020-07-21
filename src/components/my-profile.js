@@ -32,7 +32,7 @@ export const MyProfile = () => {
               <td>{data.name}</td>
               <td>{data.email}</td>
               <td>{data.country}</td>
-              <td>{data.language}</td>
+              <td>{data.languages.join(", ")}</td>
               <td>{data.gender}</td>
             </tr>
           ))}
