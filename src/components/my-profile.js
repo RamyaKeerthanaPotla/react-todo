@@ -6,6 +6,7 @@ export const MyProfile = () => {
   const [profileData, setProfileData] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [filteredData, setFilteredData] = useState("");
 
   useEffect(() => {
     getUsers();
@@ -21,10 +22,13 @@ export const MyProfile = () => {
     }
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    alert("hello");
-  };
+  useEffect(() => {
+    setFilteredData(
+      profileData.filter((data) => {
+        return data.userName.toLowerCase().includes(search.toLowerCase());
+      })
+    );
+  }, [search, profileData]);
 
   // To handle delete I need tto first check if that value is present in the array.
   // Then delete the slected entry
@@ -44,10 +48,6 @@ export const MyProfile = () => {
   if (loading) {
     return <h1>Loading.........</h1>;
   }
-
-  const filteredUserNames = profileData.filter((data) => {
-    return data.userName.toLowerCase().includes(search.toLowerCase());
-  });
 
   return (
     <div className=" profile-form">
@@ -81,7 +81,7 @@ export const MyProfile = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredUserNames.map((data) => (
+          {filteredData.map((data) => (
             <tr key={data.id}>
               <th scope="row">{data.userName}</th>
               <td>{data.name}</td>
