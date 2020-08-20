@@ -4,6 +4,7 @@ import axios from "axios";
 
 export const MyProfile = () => {
   const [profileData, setProfileData] = useState([]);
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -44,28 +45,32 @@ export const MyProfile = () => {
     return <h1>Loading.........</h1>;
   }
 
+  const filteredUserNames = profileData.filter((data) => {
+    return data.userName.toLowerCase().includes(search.toLowerCase());
+  });
+
   return (
     <div className=" profile-form">
       <div className="common-flex search-box">
-        <label>Search:h</label>
+        <label>Search: </label>
         <input
           type="text"
           className="search-input-box"
           placeholder="Search for user names.."
           title="Type in a user name"
+          onChange={(e) => setSearch(e.target.value)}
         />
-        <button
+        {/* <button
           type="submit"
           className="btn btn-primary button-styles add-btn"
           onClick={handleSearch}>
           Search
-        </button>
+        </button> */}
       </div>
 
       <table className="table">
         <thead className="thead-dark">
           <tr>
-            <th scope="col">id</th>
             <th scope="col">User Name</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
@@ -76,10 +81,9 @@ export const MyProfile = () => {
           </tr>
         </thead>
         <tbody>
-          {profileData.map((data) => (
+          {filteredUserNames.map((data) => (
             <tr key={data.id}>
-              <th scope="row">{data.id}</th>
-              <td>{data.userName}</td>
+              <th scope="row">{data.userName}</th>
               <td>{data.name}</td>
               <td>{data.email}</td>
               <td>{data.country}</td>
