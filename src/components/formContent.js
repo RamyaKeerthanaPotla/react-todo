@@ -1,20 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./styles.css";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const languageNames = ["JavaScript", "Java", "Python"];
 const genderNames = ["male", "female"];
 const countryNames = ["Australia", "Canada", "India", "United States"];
 
 export const FormContent = () => {
+  const [userName, setUserName] = useState("");
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [language, setLanguage] = useState([]);
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
+  const history = useHistory();
 
+  useEffect(() => {
+    if (history.location.state) {
+      const {
+        userName,
+        name,
+        phoneNumber,
+        email,
+        language,
+        gender,
+        country,
+      } = history.location.state;
+      console.log(history.location.state);
+      setUserName(userName);
+      setName(name);
+      setName(phoneNumber);
+    }
+  }, []);
   const handleLanguage = (e) => {
     const { value } = e.target;
     if (language.includes(value)) {
@@ -28,6 +48,7 @@ export const FormContent = () => {
     e.preventDefault();
     const payload = {
       id: uuidv4(),
+      userName,
       name,
       email,
       phone: phoneNumber,
@@ -39,19 +60,37 @@ export const FormContent = () => {
       const response = axios
         .post("http://localhost:4000/details", payload)
         .then((response) => console.log(response));
+      setUserName("");
       setName("");
       setEmail("");
       setPhoneNumber("");
-      setLanguage("");
+      setLanguage([]);
       setGender("");
       setCountry("");
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <div className=" profile-form">
       <form className="was-validated">
+        <div className="form-group row">
+          <label for="inputName" className="col-sm-2 col-form-label">
+            User Name
+          </label>
+          <div className="col-sm-4">
+            <input
+              type="text"
+              className="form-control"
+              id="inputUserName"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+
         <div className="form-group row">
           <label for="inputName" className="col-sm-2 col-form-label">
             Full Name
@@ -114,6 +153,7 @@ export const FormContent = () => {
             required>
             {countryNames.map((countryName) => (
               <>
+                <option>Select Country</option>
                 <option>{countryName}</option>
               </>
             ))}
@@ -131,6 +171,7 @@ export const FormContent = () => {
                     id="gridCheck1"
                     value={languageName}
                     onChange={handleLanguage}
+                    autoComplete="off"
                   />
                   <label className="form-check-label" for="gridCheck1">
                     {languageName}

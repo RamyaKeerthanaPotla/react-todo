@@ -16,20 +16,13 @@ const Checkbox = () => {
     }
   };
 
-  //   const getPosts = () => {
-  //     axios
-  //       .get("https://jsonplaceholder.typicode.com/posts")
-  //       .then(res => setPosts(res.data))
-  //       .catch(err => console.log(err));
-  //   };
-
   useEffect(() => {
     getPosts();
   }, []);
 
-  const handleSelectedUsers = id => {
+  const handleSelectedUsers = (id) => {
     if (selectedUsers.includes(id)) {
-      setSelectedUsers(selectedUsers.filter(userId => id !== userId));
+      setSelectedUsers(selectedUsers.filter((userId) => id !== userId));
     } else {
       setSelectedUsers(selectedUsers.concat([id]));
     }
@@ -37,7 +30,7 @@ const Checkbox = () => {
 
   return (
     <div>
-      {posts.map(post => {
+      {posts.map((post) => {
         return (
           <>
             <input

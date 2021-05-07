@@ -20,6 +20,11 @@
   margin-left: 10px;
 }
 
+.delete-btn {
+  background-color: red !important;
+  border-color: red !important;
+}
+
 .female-checkbox {
   margin-left: 10px;
 }
@@ -30,4 +35,13 @@
 
 .submit-button {
   margin-top: 20px;
+}
+
+.search-box {
+  margin-bottom: 10px;
+}
+
+.search-input-box {
+  width: 285px;
+  margin-left: 8px;
 }

@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { Pagination } from "./pagination";
 import "./styles.css";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 export const MyProfile = () => {
+  const history = useHistory();
   const [profileData, setProfileData] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [entriesPerPage, setEntriesPerPage] = useState(5);
 
   useEffect(() => {
     getUsers();
@@ -22,6 +27,7 @@ export const MyProfile = () => {
     }
   };
 
+  // Search Functionality start
   useEffect(() => {
     setFilteredData(
       profileData.filter((data) => {
@@ -29,6 +35,8 @@ export const MyProfile = () => {
       })
     );
   }, [search, profileData]);
+
+  // Search Functionality end
 
   // To handle delete I need tto first check if that value is present in the array.
   // Then delete the slected entry
@@ -39,7 +47,6 @@ export const MyProfile = () => {
         `http://localhost:4000/details/${id}`
       );
       getUsers();
-      console.log(response);
     } catch (err) {
       console.log(err);
     }
@@ -48,6 +55,30 @@ export const MyProfile = () => {
   if (loading) {
     return <h1>Loading.........</h1>;
   }
+
+  // Pagination Functionality start
+  // To get current profile entries.
+  const indexOfLastEntry = currentPage * entriesPerPage;
+  const indexofFFirstEntry = indexOfLastEntry - entriesPerPage;
+  const currentPosts = profileData.slice(indexofFFirstEntry, indexOfLastEntry);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  // Pagination Functionality end
+
+  // Edit functionality start
+
+  const handleEdit = (data) => {
+    //history.push("/enterdetails");
+    history.push({
+      pathname: "/enterdetails",
+      state: data,
+    });
+  };
+
+  // Edit functionality end
 
   return (
     <div className=" profile-form">
@@ -60,12 +91,6 @@ export const MyProfile = () => {
           title="Type in a user name"
           onChange={(e) => setSearch(e.target.value)}
         />
-        {/* <button
-          type="submit"
-          className="btn btn-primary button-styles add-btn"
-          onClick={handleSearch}>
-          Search
-        </button> */}
       </div>
 
       <table className="table">
@@ -91,7 +116,12 @@ export const MyProfile = () => {
               <td>{data.gender}</td>
               <td>
                 <button
-                  className="btn btn-primary btn-sm button-styles add-btn"
+                  className="btn btn-primary btn-sm add-btn"
+                  onClick={() => handleEdit(data)}>
+                  Edit
+                </button>
+                <button
+                  className="btn btn-primary btn-sm delete-btn add-btn"
                   onClick={() => handleDelete(data.id)}>
                   Delete
                 </button>
@@ -100,6 +130,11 @@ export const MyProfile = () => {
           ))}
         </tbody>
       </table>
+      <Pagination
+        entriesPerPage={entriesPerPage}
+        totalEntries={profileData.length}
+        paginate={paginate}
+      />
     </div>
   );
 };
